@@ -4,6 +4,7 @@
   "description": "react app  manually",
   "main": "index.js",
   "scripts": {
+    "start": "./node_modules/.bin/webpack-dev-server --mode development",
     "test": "hello"
   },
   "repository": {
@@ -31,7 +32,6 @@
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.1",
-    "save": "^2.4.0"
+    "react-router-dom": "^5.0.1"
   }
 }
