@@ -11,12 +11,12 @@ class RoutesFile extends React.Component {
             <Router>
                 <Route 
                 exact path='/'
-                component={Base}
+                component={Registration}
                 
                 />
                 <Route 
                 exact path='/home'
-                component={Base}
+                component={Registration}
                 
                 />
                 <Route exact path='/Contact' component={Contact}/>
