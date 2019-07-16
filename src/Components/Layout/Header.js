@@ -9,8 +9,8 @@ class Header extends Component {
     render() {
         return (
 
-<div class="topnav">
-  <a class="active" href="home">Home</a>
+<div className="topnav">
+  <a className="active" href="home">Home</a>
   <a href="#news">News</a>
   <a href="Contact">Contact</a>
   <a href="#about">About</a>
