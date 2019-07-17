@@ -6,9 +6,6 @@ import axios from 'axios'
 class Registration  extends Component{
    myFunction=(e) =>{
     e.preventDefault(true);
-
-     console.log(document.getElementById("firstName").value)
-
     alert("The form was submitted")
     axios.post('http://localhost:3001/submit', {
       firstName:document.getElementById("firstName").value,
