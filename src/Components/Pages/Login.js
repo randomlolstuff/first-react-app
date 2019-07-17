@@ -6,6 +6,7 @@ import axios from 'axios'
 class Login extends React.Component{
   myfunction(e){
     e.preventDefault(true);
+    console.log("hello myfunction")
     axios.post('http://localhost:3001/Signin',{
     email:document.getElementById("uname"),
     password:document.getElementById("psw"),
