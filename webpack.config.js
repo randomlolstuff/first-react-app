@@ -26,7 +26,8 @@ module.exports = {
   },
   devServer: {
     proxy: {
-      '/Signin': 'http://localhost:3001'
+      '/api': 'http://localhost:3001',
+      
       },
     contentBase: path.join(__dirname, "public/"),
     port: 3000,

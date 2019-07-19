@@ -18,7 +18,7 @@ class UserHeader extends Component {
         )
         .then(function (response) {
           console.log({response})
-          window.location.href="/logout";
+          window.location.href="/api/logout";
         })
         .catch(function (error) {
           console.log(error);

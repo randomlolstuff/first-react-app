@@ -10,7 +10,7 @@ class Login extends React.Component{
   myfunction(e){
     e.preventDefault(true);
     console.log("hello myfunction")
-    axios.post('/Signin',{
+    axios.post('/api/Signin',{
     email:document.getElementById("uname").value,
     password:document.getElementById("psw").value,
   })

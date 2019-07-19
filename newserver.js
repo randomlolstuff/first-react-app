@@ -103,7 +103,7 @@ app.post("/submit", (req, res) => {
 });
 
 
-app.post("/Signin", (req, res, next) => {
+app.post("/api/Signin", (req, res, next) => {
     console.log('session', req.session.token)
 
     // console.log("sign in api hitted")
@@ -138,8 +138,8 @@ app.post("/Signin", (req, res, next) => {
 
 );
 
-app.post('/logout',  (req, res) => {
-    console.log('logout',req.session.app)
+app.post('/api/logout',  (req, res) => {
+    console.log('logout',req.session.token)
 
    auth(req)
         
