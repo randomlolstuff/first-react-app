@@ -1,13 +1,13 @@
-import React from 'react' ;
+import React from 'react';
 import Header from './Header';
 import Footer from './Footer'
 const Base = props => (
     <div className="wrapper">
         <Header />
 
-       {props.children}
+        {props.children}
 
-       
+
 
         <Footer />
     </div>

@@ -25,6 +25,9 @@ module.exports = {
     filename: "bundle.js"
   },
   devServer: {
+    proxy: {
+      '/Signin': 'http://localhost:3001'
+      },
     contentBase: path.join(__dirname, "public/"),
     port: 3000,
     publicPath: "http://localhost:3000/dist/",

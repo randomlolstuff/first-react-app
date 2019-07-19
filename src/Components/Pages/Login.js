@@ -2,20 +2,28 @@ import React from 'react'
 import Base from '../Layout/Base'
 import './Login.css'
 import axios from 'axios'
+import {setuserid} from './userid'
+import {getuserid} from './userid'
+
 
 class Login extends React.Component{
   myfunction(e){
     e.preventDefault(true);
     console.log("hello myfunction")
-    axios.post('http://localhost:3001/Signin',{
-    email:document.getElementById("uname"),
-    password:document.getElementById("psw"),
+    axios.post('/Signin',{
+    email:document.getElementById("uname").value,
+    password:document.getElementById("psw").value,
   })
   .then(function (response) {
-    console.log({response})
+    console.log(response)
+    setuserid(response.data.userinfo),
+    console.log(getuserid)
+
+    
+    window.location.href="/userhome";
   })
   .catch(function(error){
-  console.log({error})
+  console.log(error)
   })
 
   }
