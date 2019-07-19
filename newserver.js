@@ -68,9 +68,10 @@ var User = mongoose.model("User", nameSchema);
 
 
   const auth=((req,res)=>{
+      console.log('header',req.header.x)
     const token = jwt.sign({ id: req.header.x}, "puru", { expiresIn: '1h' });
-    console.log(token)
-    console.log(req.session.app)
+    console.log('auth',token)
+    
     if(req.session.app==token){
         console.log("user authenticated")
 

@@ -10,8 +10,8 @@ class UserHeader extends Component {
     myFunction(){
         console.log("logout function")
 //        alert("The form was submitted")
-        axios.post('http://localhost:3001/logout',{
-        headers: {'x': getuserid}
+        axios.post('/api/logout',{
+        headers: {'x': getuserid()}
 }
         
        
