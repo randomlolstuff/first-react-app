@@ -68,17 +68,30 @@ var User = mongoose.model("User", nameSchema);
 
 
   const auth=((req,res)=>{
-      console.log('header',req.header.x)
-    const token = jwt.sign({ id: req.header.x}, "puru", { expiresIn: '1h' });
-    console.log('auth',token)
+    jwt.verify(req.session.token, 'puru', function(err, decoded) {
+        console.log(decoded,err) // bar
+        if(err) {
+            req.session.token = '';
+            res.status(403).send({message: 'unauthorized'})
+        } else {
+            return true;
+        }
+      });
+      
     
-    if(req.session.app==token){
-        console.log("user authenticated")
+    //   console.log('header',req.header.x)
+    // const token = jwt.sign({ id: req.header.x}, "puru", { expiresIn: '1h' });
 
-    }
-    else{
-        console.log("user not authenticated")
-    }
+    // console.log('auth',token)
+
+    
+    // if(req.session.app==token){
+    //     console.log("user authenticated")
+
+    // }
+    // else{
+    //     console.log("user not authenticated")
+    // }
   })
 
 
@@ -116,7 +129,7 @@ app.post("/api/Signin", (req, res, next) => {
         } else {
             if (bcrypt.compareSync(req.body.password, userInfo.password)) {
                 delete userInfo["password"]
-                const token = jwt.sign({ id: userInfo._id }, "puru", { expiresIn: '1h' });
+                const token = jwt.sign({ id: userInfo.username }, "puru", { expiresIn: 60 });
                 //req.session.app={};
                 
                 req.session.token = token;
@@ -128,7 +141,7 @@ app.post("/api/Signin", (req, res, next) => {
                 //     httpOnly:false
                 // })
                 
-                res.status(200).json({"userinfo":req.body.email})
+                res.status(200).json({"token":token})
                 // res.json({ status: "success", message: "user found!!!", data: { user: userInfo, token: token } });
             } else {
                 res.json({ status: "error", message: "Invalid email/password!!!", data: null });
@@ -140,9 +153,15 @@ app.post("/api/Signin", (req, res, next) => {
 );
 
 app.post('/api/logout',  (req, res) => {
-    console.log('logout',req.session.token)
-
-   auth(req)
+    auth(req,res)
+    
+        req.session.token = 'logged out';
+        console.log(req.session.token);
+        res.status(200).json({message: 'logout success'});
+    
+    
+    
+   
         
     
     
@@ -150,19 +169,19 @@ app.post('/api/logout',  (req, res) => {
 
 
 
-app.get("/getname", (req, res) => {
-    //var myData = new User(req.body);
-    // myData.save()
-    // .then(item => {
-    // res.send("item saved to database");
-    // })
-    // .catch(err => {
-    // res.status(400).send("unable to save to database");
-    // });
-    User.find({ lastName: 'world' }, function (error, comments) {
-        console.log(comments); //Display the comments returned by MongoDB, if any were found. Executes after the query is complete.
-    });
-});
+// app.get("/getname", (req, res) => {
+//     //var myData = new User(req.body);
+//     // myData.save()
+//     // .then(item => {
+//     // res.send("item saved to database");
+//     // })
+//     // .catch(err => {
+//     // res.status(400).send("unable to save to database");
+//     // });
+//     User.find({ lastName: 'world' }, function (error, comments) {
+//         console.log(comments); //Display the comments returned by MongoDB, if any were found. Executes after the query is complete.
+//     });
+// });
 // app.use(express.static("./"))
 // app.use("*", (req, res) => {
 // res.sendFile(__dirname + "/index.html");

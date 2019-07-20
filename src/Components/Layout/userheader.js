@@ -4,21 +4,22 @@ import axios from 'axios'
 import "./userheader.css";
 import {setuserid} from '../Pages/userid'
 import {getuserid} from '../Pages/userid'
+import { get } from 'mongoose';
 
 
 class UserHeader extends Component {
     myFunction(){
         console.log("logout function")
+        const a=window.localStorage.getItem('token')
+        console.log(a)
 //        alert("The form was submitted")
-        axios.post('/api/logout',{
-        headers: {'x': getuserid()}
-}
+axios.post('/api/logout',{},
         
        
         )
         .then(function (response) {
           console.log({response})
-          window.location.href="/api/logout";
+          window.location.href="/logout";
         })
         .catch(function (error) {
           console.log(error);

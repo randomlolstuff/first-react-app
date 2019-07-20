@@ -15,11 +15,13 @@ class Login extends React.Component{
     password:document.getElementById("psw").value,
   })
   .then(function (response) {
-    console.log('res',response.data.userinfo)
-    setuserid(response.data.userinfo),
-    console.log('res',getuserid())
+    console.log('res',response.data)
+    window.localStorage.setItem('token', response.data.token);
 
-    window.location.href="/userhome";
+   
+    console.log('res', window.localStorage.getItem('token'))
+
+     window.location.href="/userhome";
   })
   .catch(function(error){
   console.log(error)

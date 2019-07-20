@@ -26,7 +26,7 @@ class RoutesFile extends React.Component {
                 <Route exact path='/Registration' component={Registration}/>
                 <Route exact path='/Login' component={Login}/>
                 <Route exact path='/userhome' component={UserHome}/>
-                <Route exact path='logout' component={Logout}></Route>
+                <Route exact path='/logout' component={Logout}></Route>
 
 
             </Router>
