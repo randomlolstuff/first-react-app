@@ -94,6 +94,11 @@ var User = mongoose.model("User", nameSchema);
     // }
   })
 
+  app.post("/api/getusername",(req,res)=>{
+      auth(req,res)
+      res.json({username:"xyz"})
+  })
+
 
 
 
