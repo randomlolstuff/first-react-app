@@ -6,9 +6,15 @@ import {setuserid} from '../Pages/userid'
 import {getuserid} from '../Pages/userid'
 import { get } from 'mongoose';
 import io from 'socket.io-client';
-
-class UserHeader extends Component {
-    chatfunc(){
+import {
+    withRouter
+  } from 'react-router-dom'
+  class UserHeader extends Component {
+      constructor(props) 
+      {
+          super(props);
+      }
+    chatfunc = () => {
         
         
         console.log("chat function");
@@ -18,7 +24,7 @@ class UserHeader extends Component {
         
        
         )
-        .then(function (response) {
+        .then( (response) => {
           console.log({response})
         //   var socket =  io("http://localhost:3001");
 
@@ -32,7 +38,8 @@ class UserHeader extends Component {
         //     });
          
     
-        window.location.href="/chat";
+        //window.location.href="/chat";
+       this.props.history.push('/chat');
        
         })
         .catch(function (error) {
@@ -43,6 +50,7 @@ class UserHeader extends Component {
         
 
     }
+
     myFunction(){
         console.log("logout function")
         const a=window.localStorage.getItem('token')
@@ -69,11 +77,11 @@ class UserHeader extends Component {
             <div className="topnav">
                 <a className="active" href="/userhome">Dashboard</a>
                 <button onClick= {this.myFunction}>Logout</button>
-                <button onClick={this.chatfunc} >chat</button>
+                <button onClick={ () => this.chatfunc()} >chat</button>
                 {/* <a href="Contact">Contact</a>
                 <a href="#about">About</a> */}
             </div>
         )
     }
 }
-export default UserHeader
+export default withRouter(UserHeader);

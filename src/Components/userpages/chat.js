@@ -12,13 +12,8 @@ class Chat extends React.Component{
     emitmsg=(e)=>{
         e.preventDefault();
         
-
-        socket.on('chat message', (msg)=>{
-            this.state.chatMessages.push(<div className='well'>{msg}</div>)
-            this.setState({chatMessages:this.state.chatMessages})
-            console.log('message: ' + msg);
-          });
-        // console.log('message',document.getElementById("m").value)
+        
+        console.log('message',document.getElementById("m").value)
         socket.emit('chat message',document.getElementById("m").value);
         document.getElementById("m").value = null;
        
@@ -29,7 +24,16 @@ class Chat extends React.Component{
          console.log(socket)
          socket.on('connect', function () {
                 console.log("connected on client")
+                
                        })
+        socket.on('chat message', (msg)=>{
+            this.state.chatMessages.push(<div className='well'>{msg}</div>)
+            this.setState({chatMessages:this.state.chatMessages})
+            console.log('message1: ' + msg);
+        });
+                   
+        
+        
                   
        
     }
