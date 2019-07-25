@@ -1,5 +1,9 @@
 var express = require("express");
 var app = express();
+var http=require('http').createServer(app);
+var io = require('socket.io')(http);
+io.set("transports",["websocket","polling"]);
+// io.set('origins',"http://localhost:3001")
 var port = 3001;
 var cors = require('cors')
 var bodyParser = require('body-parser');
@@ -7,6 +11,28 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+
+var corsOptions={
+    origin:true,
+    optionsSuccessStatus:200
+};
+app.options("*",cors(corsOptions));
+app.use(cors(corsOptions));
+
+
+io.on('connection', function(socket){
+    console.log('a user connected');
+   
+  });
+  
+
+
+
+
+
+
+
+
 
 
 const saltRounds = 10;
@@ -21,7 +47,7 @@ app.use(cookieSession({
     maxAge: 24 * 60 * 60 * 1000 // 24 hours
 
   }))
-  app.use(cors());
+  
 
 //app.use(cookieParser())
 
@@ -134,7 +160,7 @@ app.post("/api/Signin", (req, res, next) => {
         } else {
             if (bcrypt.compareSync(req.body.password, userInfo.password)) {
                 delete userInfo["password"]
-                const token = jwt.sign({ id: userInfo.username }, "puru", { expiresIn: 60 });
+                const token = jwt.sign({ id: userInfo.username }, "puru", { expiresIn: '1hr'});
                 //req.session.app={};
                 
                 req.session.token = token;
@@ -172,6 +198,16 @@ app.post('/api/logout',  (req, res) => {
     
 })
 
+app.post('/api/chat',(req,res)=>{
+    auth(req,res)
+   
+    res.status(200).json({message:'chat api hitted'})
+
+    
+})
+
+
+
 
 
 // app.get("/getname", (req, res) => {
@@ -192,6 +228,6 @@ app.post('/api/logout',  (req, res) => {
 // res.sendFile(__dirname + "/index.html");
 // });
 
-app.listen(port, () => {
+http.listen(port, () => {
     console.log("Server listening on port " + port);
 });

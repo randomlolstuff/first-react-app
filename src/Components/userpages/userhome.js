@@ -35,6 +35,7 @@ class UserHome extends React.Component{
     render(){
         return(<div>{this.state.isloading ==="success" && <UserBase>
             <div>{'hello user'}</div>
+            <div></div>
     </UserBase>}</div>)
     }
 }
