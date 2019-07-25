@@ -9,7 +9,7 @@ import io from 'socket.io-client';
 
 class UserHeader extends Component {
     chatfunc(){
-          
+        
         
         console.log("chat function");
        

@@ -22,7 +22,10 @@ app.use(cors(corsOptions));
 
 io.on('connection', function(socket){
     console.log('a user connected');
-   
+    socket.on('chat message', function (data) {
+        console.log(data);
+        socket.emit('chat message',data)
+      });
   });
   
 
