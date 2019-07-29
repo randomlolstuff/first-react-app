@@ -1,7 +1,9 @@
 import React from 'react'
 import Userbase from '../Layout/userbase'
 import io from 'socket.io-client';
+import './chat.css'
 var socket = null
+var stringify = require('json-stringify');
 class Chat extends React.Component{
 
     constructor(props){
@@ -14,7 +16,10 @@ class Chat extends React.Component{
         
         
         console.log('message',document.getElementById("m").value)
-        socket.emit('chat message',document.getElementById("m").value);
+        
+        var user_mes={username:localStorage.getItem('useremail'),message:document.getElementById("m").value}
+        var my_data=JSON.stringify(user_mes)
+        socket.emit('chat message',my_data);
         document.getElementById("m").value = null;
        
 
@@ -27,7 +32,11 @@ class Chat extends React.Component{
                 
                        })
         socket.on('chat message', (msg)=>{
-            this.state.chatMessages.push(<div className='well'>{msg}</div>)
+            this.state.chatMessages.push(<div>
+                <div className='well'>{ JSON.parse(msg).username
+                }</div>
+                <div className='well'>{ JSON.parse(msg).message}</div>
+            </div>)
             this.setState({chatMessages:this.state.chatMessages})
             console.log('message1: ' + msg);
         });

@@ -4,24 +4,35 @@ import './Login.css'
 import axios from 'axios'
 import {setuserid} from './userid'
 import {getuserid} from './userid'
+import {
+  withRouter
+} from 'react-router-dom'
+
 
 
 class Login extends React.Component{
-  myfunction(e){
+  constructor(props)
+  {
+    super(props)
+  }
+  myfunction=(e)=>{
     e.preventDefault(true);
     console.log("hello myfunction")
     axios.post('/api/Signin',{
     email:document.getElementById("uname").value,
     password:document.getElementById("psw").value,
   })
-  .then(function (response) {
+  .then((response)=> {
     console.log('res',response.data)
+    console.log('username',response.data.username)
     window.localStorage.setItem('token', response.data.token);
+    window.localStorage.setItem('useremail', response.data.username);
+   
 
    
     console.log('res', window.localStorage.getItem('token'))
 
-     window.location.href="/userhome";
+    this.props.history.push('/userhome');
   })
   .catch(function(error){
   console.log(error)
@@ -56,4 +67,4 @@ class Login extends React.Component{
         )
     }
 }
-export default Login
+export default withRouter(Login);

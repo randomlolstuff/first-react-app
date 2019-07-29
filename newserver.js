@@ -24,7 +24,7 @@ io.on('connection', function(socket){
     console.log('a user connected');
     socket.on('chat message', function (data) {
         console.log(data);
-        socket.emit('chat message',data)
+        io.emit('chat message',data,{ for: 'everyone' })
       });
   });
   
@@ -125,7 +125,7 @@ var User = mongoose.model("User", nameSchema);
 
   app.post("/api/getusername",(req,res)=>{
       auth(req,res)
-      res.json({username:"xyz"})
+      res.json({username:req.body.email})
   })
 
 
@@ -175,7 +175,8 @@ app.post("/api/Signin", (req, res, next) => {
                 //     httpOnly:false
                 // })
                 
-                res.status(200).json({"token":token})
+                res.status(200).json({"token":token,"username":req.body.email})
+                
                 // res.json({ status: "success", message: "user found!!!", data: { user: userInfo, token: token } });
             } else {
                 res.json({ status: "error", message: "Invalid email/password!!!", data: null });
@@ -213,23 +214,7 @@ app.post('/api/chat',(req,res)=>{
 
 
 
-// app.get("/getname", (req, res) => {
-//     //var myData = new User(req.body);
-//     // myData.save()
-//     // .then(item => {
-//     // res.send("item saved to database");
-//     // })
-//     // .catch(err => {
-//     // res.status(400).send("unable to save to database");
-//     // });
-//     User.find({ lastName: 'world' }, function (error, comments) {
-//         console.log(comments); //Display the comments returned by MongoDB, if any were found. Executes after the query is complete.
-//     });
-// });
-// app.use(express.static("./"))
-// app.use("*", (req, res) => {
-// res.sendFile(__dirname + "/index.html");
-// });
+
 
 http.listen(port, () => {
     console.log("Server listening on port " + port);

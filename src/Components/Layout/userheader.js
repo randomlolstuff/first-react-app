@@ -2,84 +2,69 @@ import React, { Component } from 'react';
 import axios from 'axios'
 
 import "./userheader.css";
-import {setuserid} from '../Pages/userid'
-import {getuserid} from '../Pages/userid'
-import { get } from 'mongoose';
-import io from 'socket.io-client';
+
+
 import {
     withRouter
-  } from 'react-router-dom'
-  class UserHeader extends Component {
-      constructor(props) 
-      {
-          super(props);
-      }
+} from 'react-router-dom'
+class UserHeader extends Component {
+    constructor(props) {
+        super(props);
+    }
     chatfunc = () => {
-        
-        
+
+
         console.log("chat function");
-       
-        axios.post('/api/chat',{},
-        
-        
-       
+
+        axios.post('/api/chat', {},
+
+
+
         )
-        .then( (response) => {
-          console.log({response})
-        //   var socket =  io("http://localhost:3001");
+            .then((response) => {
+                console.log({ response })
 
-        //   socket.on('connect',function(){
-        //   console.log("connected on client")
-        //   })
-        //   const socket = io('http://localhost:3001');
+                this.props.history.push('/chat');
 
-        //   socket.on('connect', () => {
-        //   console.log(socket.disconnected); // false
-        //     });
-         
-    
-        //window.location.href="/chat";
-       this.props.history.push('/chat');
-       
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-        
-        
-        
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+
+
 
     }
 
-    myFunction(){
+    myFunction=() =>{
         console.log("logout function")
-        const a=window.localStorage.getItem('token')
+        const a = window.localStorage.getItem('token')
         console.log(a)
-//        alert("The form was submitted")
-         axios.post('/api/logout',{},
-        
-       
+
+        axios.post('/api/logout', {},
+
+
         )
-        .then(function (response) {
-            
-          console.log({response})
-           
-          window.location.href="/logout";
-          
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-        }
+            .then((response)=> {
+
+                console.log({ response })
+
+                this.props.history.push('/logout');
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
     render() {
         return (
 
             <div className="topnav">
                 <a className="active" href="/userhome">Dashboard</a>
-                <button onClick= {this.myFunction}>Logout</button>
-                <button onClick={ () => this.chatfunc()} >chat</button>
-                {/* <a href="Contact">Contact</a>
-                <a href="#about">About</a> */}
+                <a className="active" href='/schedule'>schedule</a>
+                <button onClick={this.myFunction}>Logout</button>
+                <button onClick={() => this.chatfunc()} >chat</button>
+
             </div>
         )
     }
