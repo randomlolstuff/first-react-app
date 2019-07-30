@@ -27,7 +27,7 @@ class Schedule extends React.Component{
                   center: 'title',
                   right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
                 },
-                defaultDate: '2018-01-12',
+                defaultDate: '2019-07-31',
                 navLinks: true, // can click day/week names to navigate views
                 editable: true,
                 eventLimit: true, // allow "more" link when too many events

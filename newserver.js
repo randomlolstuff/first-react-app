@@ -11,6 +11,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+var moment = require('moment');
+moment().format();
 
 var corsOptions={
     origin:true,
@@ -211,61 +213,47 @@ app.post('/api/chat',(req,res)=>{
 })
 
 app.post('/api/schedule',(req,res)=>
-auth(req,res),
+
+
 res.json({events: [
     {
-      title: 'All Day Event',
-      start: '2018-01-01',
+      title: 'Sri Lanka vs Bangladesh, 3rd ODI',
+      start: '2019-07-31T14:30:00',
     },
     {
-      title: 'Long Event',
-      start: '2018-01-07',
-      end: '2018-01-10'
+      title: 'England vs Australia, 1st Test',
+      start: '2019-08-01T15:30:00',
+      end: '2019-08-06'
+    },
+    
+    
+    {
+      title: 'West Indies vs India, 1st T20I',
+      start: '2019-08-03T20:00:00',
+      end: '2019-07-03'
     },
     {
-      id: 999,
-      title: 'Repeating Event',
-      start: '2018-01-09T16:00:00'
+      title: 'Netherlands vs United Arab Emirates, 1st T20I',
+      start: '2019-08-03T19:30:00',
+      end: '2019-08-03'
+    },
+    
+    
+    
+    {
+      title: 'West Indies vs India, 2nd T20I',
+      start: '2019-08-04T20:00:00',
+      end: '2019-08-04'
     },
     {
-      id: 999,
-      title: 'Repeating Event',
-      start: '2018-01-16T16:00:00'
+      title: 'Netherlands vs United Arab Emirates, 2nd T20I Party',
+      start: '2019-08-05T19:30:00',
+      end:'2019-08-05'
     },
     {
-      title: 'Conference',
-      start: '2018-01-11',
-      end: '2018-01-13'
-    },
-    {
-      title: 'Meeting',
-      start: '2018-01-12T10:30:00',
-      end: '2018-01-12T12:30:00'
-    },
-    {
-      title: 'Lunch',
-      start: '2018-01-12T12:00:00'
-    },
-    {
-      title: 'Meeting',
-      start: '2018-01-12T14:30:00'
-    },
-    {
-      title: 'Happy Hour',
-      start: '2018-01-12T17:30:00'
-    },
-    {
-      title: 'Dinner',
-      start: '2018-01-12T20:00:00'
-    },
-    {
-      title: 'Birthday Party',
-      start: '2018-01-13T07:00:00'
-    },
-    {
-      title: 'Click for Google',
-      url: 'http://google.com/',
-      start: '2018-01-28'
+      title: 'West Indies vs India, 3rd T20I',
+      start: '2019-08-06T20:00:00',
+      end:'2019-08-06'
     }
   ]}))
 

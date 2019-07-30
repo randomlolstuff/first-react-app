@@ -47,13 +47,16 @@ class Chat extends React.Component{
        
     }
     render(){
-        return(<Userbase><div>
+        return(<Userbase><div >
+
         
-        
-          <div id="messages">{this.state.chatMessages}</div>
+        <div id="messages">{this.state.chatMessages}</div>
           <form >
             <input id="m" autoComplete="off" /><button onClick={this.emitmsg}>Send</button>
           </form>
+         
+          
+
         </div></Userbase>)
     }
 
