@@ -52,7 +52,7 @@ class Login extends React.Component{
     <label for="psw"><b>Password</b></label>
     <input id="psw" type="password" placeholder="Enter Password" name="psw" required/>
 
-    <button type="submit">Login</button>
+    <button type="submit" class="btn btn-default">Login</button>
     <label>
       <input type="checkbox" checked="checked" name="remember"/> Remember me
     </label>

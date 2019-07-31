@@ -50,11 +50,11 @@ class Chat extends React.Component{
         return(<Userbase><div >
 
         
-        <div id="messages">{this.state.chatMessages}</div>
+        <div id="overflow"></div>
+          <div id="messages">{this.state.chatMessages}</div>
           <form >
             <input id="m" autoComplete="off" /><button onClick={this.emitmsg}>Send</button>
           </form>
-         
           
 
         </div></Userbase>)

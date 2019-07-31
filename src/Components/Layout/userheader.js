@@ -58,14 +58,21 @@ class UserHeader extends Component {
     }
     render() {
         return (
+            <ul>
+                <li><a href="/userhome">Dashboard</a></li>
+                <li><a href='/schedule'>schedule</a></li>
+                <li><button class="btn-default1" onClick={this.myFunction}>Logout</button></li>
+                <li><button class="btn-default1" onClick={() => this.chatfunc()} >chat</button></li>
+            </ul>
 
-            <div className="topnav">
-                <a className="active" href="/userhome">Dashboard</a>
-                <a className="active" href='/schedule'>schedule</a>
-                <button onClick={this.myFunction}>Logout</button>
-                <button onClick={() => this.chatfunc()} >chat</button>
+            // <div className="topnav">
+            //     <a className="active" href="/userhome">Dashboard</a>
+            //     <a className="active" href='/schedule'>schedule</a>
+            //     {/* <a className="active" href="/logout" onClick={this.myFunction}>logout</a> */}
+            //     <button onClick={this.myFunction}>Logout</button>
+            //     <button onClick={() => this.chatfunc()} >chat</button>
 
-            </div>
+            // </div>
         )
     }
 }
