@@ -11,8 +11,12 @@ import '@fullcalendar/daygrid/main.css'
 import '@fullcalendar/timegrid/main.css'
 import '@fullcalendar/list/main.css'
 import Axios from 'axios';
+import Clock from 'react-live-clock';
 
 class Schedule extends React.Component{
+ 
+
+  
     componentDidMount(){
         document.addEventListener('DOMContentLoaded', function() {
 
@@ -31,7 +35,11 @@ class Schedule extends React.Component{
                 navLinks: true, // can click day/week names to navigate views
                 editable: true,
                 eventLimit: true, // allow "more" link when too many events
-                events:Response.data.events
+                
+                
+                events:Response.data.events,
+                
+                
               });
             
               calendar.render();
@@ -41,7 +49,8 @@ class Schedule extends React.Component{
           });
     }
     render(){
-        return(<div><Userbase><div id='calendar'></div></Userbase></div>)
+        return(<div><Userbase><div id='clock'><Clock format={'HH:mm:ss'} ticking={true} timezone={'US/Pacific'} /></div><div id='calendar'></div>
+        </Userbase></div>)
     }
 }
 export default Schedule

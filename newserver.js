@@ -213,29 +213,45 @@ app.post('/api/chat',(req,res)=>{
 })
 
 app.post('/api/schedule',(req,res)=>
+{
+
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+  
+
 
 
 res.json({events: [
     {
       title: 'Sri Lanka vs Bangladesh, 3rd ODI',
       start: '2019-07-31T14:30:00',
+      color:getRandomColor(),
     },
     {
       title: 'England vs Australia, 1st Test',
       start: '2019-08-01T15:30:00',
-      end: '2019-08-06'
+      end: '2019-08-06',
+      color:getRandomColor(),
     },
     
     
     {
       title: 'West Indies vs India, 1st T20I',
       start: '2019-08-03T20:00:00',
-      end: '2019-07-03'
+      end: '2019-07-03',
+      color:getRandomColor(),
     },
     {
       title: 'Netherlands vs United Arab Emirates, 1st T20I',
       start: '2019-08-03T19:30:00',
-      end: '2019-08-03'
+      end: '2019-08-03',
+      color:getRandomColor(),
     },
     
     
@@ -243,19 +259,24 @@ res.json({events: [
     {
       title: 'West Indies vs India, 2nd T20I',
       start: '2019-08-04T20:00:00',
-      end: '2019-08-04'
+      end: '2019-08-04',
+      color:getRandomColor(),
     },
     {
       title: 'Netherlands vs United Arab Emirates, 2nd T20I Party',
       start: '2019-08-05T19:30:00',
-      end:'2019-08-05'
+      end:'2019-08-05',
+      color:getRandomColor(),
     },
     {
       title: 'West Indies vs India, 3rd T20I',
       start: '2019-08-06T20:00:00',
-      end:'2019-08-06'
+      end:'2019-08-06',
+      color:getRandomColor(),
     }
-  ]}))
+  ]})
+
+})
 
 
 
