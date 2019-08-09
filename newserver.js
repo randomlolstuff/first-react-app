@@ -204,6 +204,21 @@ app.post('/api/logout',  (req, res) => {
     
 })
 
+app.post('/api/listing',(req,res,next)=>{
+  
+  User.find({},function(err,userInfo){
+    if(err||!userInfo){
+      console.log(err)
+      next(err);
+    }
+    else{
+      console.log(userInfo,req);
+      res.status(200).json(userInfo);
+    }
+  })
+}
+)
+
 app.post('/api/chat',(req,res)=>{
     auth(req,res)
    
@@ -214,6 +229,7 @@ app.post('/api/chat',(req,res)=>{
 
 app.post('/api/schedule',(req,res)=>
 {
+  
 
 function getRandomColor() {
   var letters = '0123456789ABCDEF';

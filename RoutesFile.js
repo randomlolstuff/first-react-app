@@ -8,6 +8,7 @@ import UserHome from './src/Components/userpages/userhome'
 import Logout from './src/Components/Pages/logout';
 import Chat from './src/Components/userpages/chat'
 import Schedule from './src/Components/Layout/schedule';
+import Allusers from './src/Components/userpages/Allusers'
 
 
 class RoutesFile extends React.Component {
@@ -32,6 +33,7 @@ class RoutesFile extends React.Component {
                 <Route exact path='/logout' component={Logout}></Route>
                 <Route exact path='/chat'    component={Chat}></Route>
                 <Route exact path='/schedule' component={Schedule}></Route>
+                <Route exact path='/allusers' component={Allusers}></Route>
 
 
             

@@ -11,6 +11,7 @@ class UserHeader extends Component {
     constructor(props) {
         super(props);
     }
+    
     chatfunc = () => {
 
 
@@ -63,6 +64,7 @@ class UserHeader extends Component {
                 <li><a href='/schedule'>schedule</a></li>
                 <li><button class="btn-default1" onClick={this.myFunction}>Logout</button></li>
                 <li><button class="btn-default1" onClick={() => this.chatfunc()} >chat</button></li>
+                <li><a href="/allusers">Users</a></li>
             </ul>
 
             // <div className="topnav">
