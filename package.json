@@ -45,7 +45,6 @@
     "fullcalendar": "^3.10.0",
     "json-stringify": "^1.0.0",
     "jsonwebtoken": "^8.5.1",
-    "moment": "^2.24.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-live-clock": "^3.1.0",

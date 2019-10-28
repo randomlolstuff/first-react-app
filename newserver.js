@@ -11,8 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-var moment = require('moment');
-moment().format();
+
 
 var corsOptions={
     origin:true,
