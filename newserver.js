@@ -63,6 +63,26 @@ app.use(cookieSession({
 var mongoose = require("mongoose");
 mongoose.Promise = global.Promise; mongoose.connect("mongodb://localhost:27017/node-demo");
 
+var infiniteDataSchema = new mongoose.Schema({
+
+  first_name: {
+    type: String,
+    trim: true,
+    required: true,   
+},
+last_name : {
+  type: String,
+  trim: true,
+  required: true,
+},
+email : {
+  type: String,
+  trim: true,
+  required: true,
+},
+
+})
+
 var nameSchema = new mongoose.Schema({
     firstName: {
         type: String,
@@ -94,6 +114,7 @@ nameSchema.pre('save', function (next) {
 });
 
 var User = mongoose.model("User", nameSchema);
+var UnlimitedData = mongoose.model("Infirecord", infiniteDataSchema);
 
 
 
@@ -107,6 +128,8 @@ var User = mongoose.model("User", nameSchema);
             return true;
         }
       });
+
+
       
     
     //   console.log('header',req.header.x)
@@ -129,6 +152,21 @@ var User = mongoose.model("User", nameSchema);
       res.json({username:req.body.email})
   })
 
+  
+  app.post('/api/infinteData',(req,res,next)=>{
+  
+    UnlimitedData.find({},function(err,userInfo){
+      if(err||!userInfo){
+        console.log(err)
+        next(err);
+      }
+      else{
+        console.log(userInfo,req);
+        res.status(200).json(userInfo);
+      }
+    })
+  }
+  )
 
 
 
