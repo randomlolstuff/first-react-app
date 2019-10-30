@@ -154,6 +154,10 @@ var UnlimitedData = mongoose.model("Infirecord", infiniteDataSchema);
 
   
   app.post('/api/infinteData',(req,res,next)=>{
+    var pageNo = Number(req.query.pageNo);
+    console.log(pageNo);
+    var pageLimit = Number(req.query.pageLimit);
+    console.log(typeof(pageLimit));
   
     UnlimitedData.find({},function(err,userInfo){
       if(err||!userInfo){
@@ -164,7 +168,7 @@ var UnlimitedData = mongoose.model("Infirecord", infiniteDataSchema);
         console.log(userInfo,req);
         res.status(200).json(userInfo);
       }
-    })
+    }).skip((pageNo-1)*10).limit(pageLimit)
   }
   )
 
