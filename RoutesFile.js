@@ -9,6 +9,7 @@ import Logout from './src/Components/Pages/logout';
 import Chat from './src/Components/userpages/chat'
 import Schedule from './src/Components/Layout/schedule';
 import Allusers from './src/Components/userpages/Allusers'
+import UnlimitedData from './src/Components/Pages/UnlimitedData'
 
 
 class RoutesFile extends React.Component {
@@ -34,6 +35,7 @@ class RoutesFile extends React.Component {
                 <Route exact path='/chat'    component={Chat}></Route>
                 <Route exact path='/schedule' component={Schedule}></Route>
                 <Route exact path='/allusers' component={Allusers}></Route>
+                <Route exact path='/UnlimitedData' component={UnlimitedData}></Route>
 
 
             
