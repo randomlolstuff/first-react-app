@@ -1,11 +1,16 @@
 import React from 'react'
 import UserBase from '../Layout/userbase';
 import axios from 'axios'
-
+import {useSelector, connect} from 'react-redux';
+//var counter;
 class UserHome extends React.Component{
+    
+    
 
     constructor(){
-        super()
+        
+        super();
+        
 
         this.state={
             isloading:"init"
@@ -13,7 +18,9 @@ class UserHome extends React.Component{
         }
         
         }
+       
         componentDidMount(){
+            // counter = useSelector(state => state.counter);
             this.setState({isloading:"loading"});
         axios.post('/api/getusername',{},
         
@@ -33,10 +40,14 @@ class UserHome extends React.Component{
     
 
     render(){
+        console.log(this.props);
         return(<div>{this.state.isloading ==="success" && <UserBase>
             <div>{'hello user'}</div>
-            <div></div>
+            <div>Counter {this.props.counter} </div>
+            <button>+</button>
+            <button>-</button>
     </UserBase>}</div>)
     }
 }
-export default UserHome;
+const mapStateToProps = state => {return {counter: state.counter}};
+export default connect(mapStateToProps, {} )(UserHome);
