@@ -10,7 +10,7 @@ class SendingProp extends React.Component{
     }
     render(){
         return(
-            <Nested mydata={data}></Nested>
+            <Nested mydata={data} dashString=''></Nested>
         )
     }
 

@@ -9,7 +9,7 @@ class Nested extends React.Component{
    return( <div>
        
         
-   <div>{item}:{typeof this.props.mydata[item]=="object"?<Nested mydata={this.props.mydata[item]}/>:this.props.mydata[item]}</div>
+   <div>{this.props.dashString + item}:{typeof this.props.mydata[item]=="object"?<Nested mydata={this.props.mydata[item]} dashString={this.props.dashString+'-'}/>:this.props.mydata[item]}</div>
        
     </div> )})}
      </div>)
