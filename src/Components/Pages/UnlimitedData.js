@@ -12,7 +12,7 @@ class UnlimitedData extends React.Component {
     }
 
     componentDidMount=()=>{
-        axios.post('/api/infinteData?&pageNo=1&pageLimit=10',{})
+        axios.get('http://localhost:8080/shifts',{})
 
         .then((Response)=>{
             console.log(Response);

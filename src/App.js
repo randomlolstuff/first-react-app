@@ -7,7 +7,7 @@ import Nested from "./Components/Pages/nesteddata";
 import SendingProp from "./Components/Pages/sendingDataSprop"
 export default class App extends Component{
   render(){
-    return(<SendingProp/>);
+    return(<Routes/>);
   }
 }
 
