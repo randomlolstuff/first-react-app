@@ -8,6 +8,10 @@ class AvailableBookings extends React.Component{
         super(props);
         this.state={
             list:[],
+            selected_city:" ",
+            AvailableBookingDataSet:{},
+            currentTab:"My",
+            
           
             
              
@@ -48,6 +52,15 @@ class AvailableBookings extends React.Component{
 
     }
 
+    selectCity=(selCity)=>{
+        this.setState({selected_city:selCity})
+    }
+
+    setTab=(tab)=>{
+        this.setState({currentTab:tab})
+
+    }
+
 
     componentDidMount=()=>{
         axios.get('http://localhost:8080/shifts',{})
@@ -74,6 +87,10 @@ class AvailableBookings extends React.Component{
            
             
             console.log("available",city_map);
+            
+            this.setState({selected_city: Object.keys(city_map)[0]})
+
+            this.setState({AvailableBookingDataSet:city_map});
 
 
             
@@ -92,7 +109,31 @@ class AvailableBookings extends React.Component{
 
     }
     render(){
-        return(<div>hello</div>)
+        
+    return(<div>
+        <div onClick={this.setTab.bind(this,"My")}>My shifts</div>
+        <div onClick={this.setTab.bind(this,"Available")}>Available shifts</div>
+        {this.state.currentTab=="My"?<div >hello</div>
+        :
+        <div>
+
+    <div>{Object.keys(this.state.AvailableBookingDataSet).map((renderCity,k)=>{
+        return(<div onClick={this.selectCity.bind(this,renderCity)}>{renderCity}</div>)
+    })}</div>
+        {Object.keys(this.state.AvailableBookingDataSet[this.state.selected_city]||{}).sort().map((dates,j)=>{
+        return (<div>
+             <div>{dates}</div>
+            {(this.state.AvailableBookingDataSet[this.state.selected_city][dates]).map((item,i)=>{
+            return(<div>
+       
+            <SingleRow item={item}/>
+            </div>)
+            
+        })
+    }</div>
+        )
+       })}</div>}
+       </div>)
     }
    
 
