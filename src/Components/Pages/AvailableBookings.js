@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { object } from 'prop-types';
 import SingleRow from './SingleRow';
+import MyBookings from './MyBookings';
 
 class AvailableBookings extends React.Component{
     constructor(props){
@@ -11,6 +12,7 @@ class AvailableBookings extends React.Component{
             selected_city:" ",
             AvailableBookingDataSet:{},
             currentTab:"My",
+            MyBookingDataSet:{},
             
           
             
@@ -18,7 +20,7 @@ class AvailableBookings extends React.Component{
             
         };
     }
-    group_by_city_dates=(input)=>{
+    group_by_dates=(input)=>{
         const AvailableBookingsSet={};
         input.map((item,j)=>{
             const start_date = new Date(item.startTime)
@@ -27,8 +29,9 @@ class AvailableBookings extends React.Component{
             "July", "August", "September", "October", "November", "December"];
 
             const start_month = monthNames[start_month_index];
-            console.log(start_month);
             const start_day = start_date.getDay();
+            console.log(item.startTime,start_day,start_month);
+
             const start_year = start_date.getFullYear();
             const final_date = start_month + " " +start_day + " " + start_year;
             if(AvailableBookingsSet[final_date]){
@@ -69,6 +72,7 @@ class AvailableBookings extends React.Component{
             console.log(Response);
             
             const city_map={};
+            const date_sort=[];
             Response.data.map((item,i)=>{
                 if(city_map[item.area]){
                     city_map[item.area].push(item);
@@ -78,10 +82,21 @@ class AvailableBookings extends React.Component{
 
             })
             Object.keys(city_map).map((city,i)=>{
-                const city_values = this.group_by_city_dates(city_map[city]);
+                const city_values = this.group_by_dates(city_map[city]);
                 city_map[city] = city_values;
 
             })
+
+            Response.data.map((item,i)=>{
+                if(item.booked==true){
+                    date_sort.push(item);
+
+
+                }
+            })
+            this.setState({MyBookingDataSet:this.group_by_dates(date_sort)});
+            console.log("mydata",this.state.MyBookingDataSet);
+
             
             
            
@@ -113,7 +128,7 @@ class AvailableBookings extends React.Component{
     return(<div>
         <div onClick={this.setTab.bind(this,"My")}>My shifts</div>
         <div onClick={this.setTab.bind(this,"Available")}>Available shifts</div>
-        {this.state.currentTab=="My"?<div >hello</div>
+        {this.state.currentTab=="My"?<MyBookings BookingData={this.state.MyBookingDataSet}/>
         :
         <div>
 
