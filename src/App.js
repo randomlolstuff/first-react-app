@@ -1,13 +1,10 @@
 import React, { Component} from "react";
 import ReactDOM from 'react-dom';
-import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
-import Routes from '../RoutesFile';
-import nested from './Components/Pages/nesteddata';
-import Nested from "./Components/Pages/nesteddata";
-import SendingProp from "./Components/Pages/sendingDataSprop"
+import AvailableBookings from './Components/Pages/AvailableBookings'
+
 export default class App extends Component{
   render(){
-    return(<Routes/>);
+    return(<AvailableBookings/>);
   }
 }
 
