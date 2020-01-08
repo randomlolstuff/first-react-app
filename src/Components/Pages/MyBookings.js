@@ -13,7 +13,7 @@ class MyBookings extends React.Component{
                 return(<div>
             <div className="dates-events">{date}</div>
                 {this.props.BookingData[date].map((item,i)=>{
-                    return( <SingleRow item={item} currentTab={this.props.currentTab} createDataSets={this.createDataSets}/>)
+                    return( <SingleRow item={item} currentTab={this.props.currentTab} createDataSets={this.props.createDataSets}/>)
                 })}</div>
             )})}
         </div>
