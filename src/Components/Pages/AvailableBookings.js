@@ -3,6 +3,8 @@ import axios from 'axios';
 import { object } from 'prop-types';
 import SingleRow from './SingleRow';
 import MyBookings from './MyBookings';
+import './AvailableBookings.css';
+import { Card } from 'reactstrap';
 
 class AvailableBookings extends React.Component{
     constructor(props){
@@ -55,17 +57,7 @@ class AvailableBookings extends React.Component{
 
     }
 
-    selectCity=(selCity)=>{
-        this.setState({selected_city:selCity})
-    }
-
-    setTab=(tab)=>{
-        this.setState({currentTab:tab})
-
-    }
-
-
-    componentDidMount=()=>{
+    createDataSets=()=>{
         axios.get('http://localhost:8080/shifts',{})
 
         .then((Response)=>{
@@ -95,13 +87,13 @@ class AvailableBookings extends React.Component{
                 }
             })
             this.setState({MyBookingDataSet:this.group_by_dates(date_sort)});
-            console.log("mydata",this.state.MyBookingDataSet);
+        
 
             
             
            
             
-            console.log("available",city_map);
+            
             
             this.setState({selected_city: Object.keys(city_map)[0]})
 
@@ -121,31 +113,60 @@ class AvailableBookings extends React.Component{
         .catch(function (error) {
             console.log(error);
         });
+    }
+
+    selectCity=(selCity)=>{
+        this.setState({selected_city:selCity})
+    }
+
+    setTab=(tab)=>{
+        this.setState({currentTab:tab})
+
+    }
+
+
+    componentDidMount=()=>{
+        this.createDataSets();
+        
 
     }
     render(){
         
-    return(<div>
-        <div onClick={this.setTab.bind(this,"My")}>My shifts</div>
-        <div onClick={this.setTab.bind(this,"Available")}>Available shifts</div>
-        {this.state.currentTab=="My"?<MyBookings BookingData={this.state.MyBookingDataSet}/>
+    return(<div className="page-wrapper" >
+        
+        
+        <div className="myTab">
+        <div onClick={this.setTab.bind(this,"My")} className={this.state.currentTab=="My"?"selectedTab":""}>My shifts</div>
+        <div onClick={this.setTab.bind(this,"Available")} className={this.state.currentTab=="Available"?"selectedTab":""}>Available shifts</div>
+        </div>
+        
+        
+        {this.state.currentTab=="My"?<MyBookings BookingData={this.state.MyBookingDataSet} currentTab={this.props.currentTab } createDataSets={this.createDataSets}/>
         :
         <div>
 
-    <div>{Object.keys(this.state.AvailableBookingDataSet).map((renderCity,k)=>{
-        return(<div onClick={this.selectCity.bind(this,renderCity)}>{renderCity}</div>)
+    <div className="cityNames">{Object.keys(this.state.AvailableBookingDataSet).map((renderCity,k)=>{
+        return(<div onClick={this.selectCity.bind(this,renderCity)} className={this.state.selected_city==renderCity?"selectedCity":""}>{renderCity}</div>)
     })}</div>
         {Object.keys(this.state.AvailableBookingDataSet[this.state.selected_city]||{}).sort().map((dates,j)=>{
-        return (<div>
-             <div>{dates}</div>
+            
+        return (<div >
+            <div >
+             <div className="dates-events" >{dates}</div>
+            <div>
             {(this.state.AvailableBookingDataSet[this.state.selected_city][dates]).map((item,i)=>{
             return(<div>
        
-            <SingleRow item={item}/>
+            <SingleRow item={item} currentTab={this.state.currentTab} createDataSets={this.createDataSets} />
             </div>)
             
+           
+            
         })
-    }</div>
+    }
+     </div>
+     </div>
+     </div>
         )
        })}</div>}
        </div>)

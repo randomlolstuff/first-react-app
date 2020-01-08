@@ -1,5 +1,6 @@
 import React from 'react';
 import SingleRow from './SingleRow';
+import './MyBookings.css';
 class MyBookings extends React.Component{
     constructor(props){
         super(props)
@@ -10,9 +11,9 @@ class MyBookings extends React.Component{
         <div>
             {Object.keys(this.props.BookingData).map((date,i)=>{
                 return(<div>
-            <div>{date}</div>
+            <div className="dates-events">{date}</div>
                 {this.props.BookingData[date].map((item,i)=>{
-                    return( <SingleRow item={item}/>)
+                    return( <SingleRow item={item} currentTab={this.props.currentTab} createDataSets={this.createDataSets}/>)
                 })}</div>
             )})}
         </div>

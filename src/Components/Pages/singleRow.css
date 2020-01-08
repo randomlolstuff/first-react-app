@@ -1,3 +1,54 @@
-.row-wrapper{
+.one-row{
     display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    border-top: 1px solid #d3d3d3;
+    border-top-width: 2px;
+    padding-top: 10px;
+    border-bottom:10px;
+
+    background-color: white;
+   
+    
+    
+}
+.row-wrapper{
+    width: 600px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.status-cancel{
+    
+    display: flex;
+    padding-right: 20px;
+    
+    
+    
+}
+.time-wrapper{
+    display: flex;
+    
+    
+}
+.bookedText{
+    margin-right: 10px;
+    color: #A4B8D3;
+}
+.cancel-btn{
+    color: #E2006A;
+    background-color: white;
+    border-radius: 12px;
+    border-color: #E2006A;
+    text-align: center;
+    cursor: pointer;
+
+}
+.book-btn{
+    color: #55cb82;
+    background-color: white;
+    border-radius: 12px;
+    border-color: #55cb82;
+    text-align: center;
+    cursor: pointer
+
 }
