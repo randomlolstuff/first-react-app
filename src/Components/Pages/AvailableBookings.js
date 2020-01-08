@@ -31,7 +31,7 @@ class AvailableBookings extends React.Component{
             "July", "August", "September", "October", "November", "December"];
 
             const start_month = monthNames[start_month_index];
-            const start_day = start_date.getDay();
+            const start_day = start_date.getDate();
             console.log(item.startTime,start_day,start_month);
 
             const start_year = start_date.getFullYear();
@@ -53,6 +53,18 @@ class AvailableBookings extends React.Component{
 
             
         })
+        Object.keys(AvailableBookingsSet).map((date) => {
+            for (var i =0 ; i< AvailableBookingsSet[date].length; i++){
+                if(AvailableBookingsSet[date][i].booked)
+                for(var j = 0; j< AvailableBookingsSet[date].length;j++){
+                    if(i !=j && AvailableBookingsSet[date][j].booked === false && ((AvailableBookingsSet[date][j].startTime > AvailableBookingsSet[date][i].startTime && AvailableBookingsSet[date][j].startTime < AvailableBookingsSet[date][i].endTime) || (AvailableBookingsSet[date][j].endTime < AvailableBookingsSet[date][i].endTime && AvailableBookingsSet[date][j].endTime > AvailableBookingsSet[date][i].startTime)))
+                    AvailableBookingsSet[date][j].bookingAllowed = false;
+                    //else AvailableBookingsSet[date][j].bookingAllowed = true;
+                }
+
+
+            }
+        })
         return AvailableBookingsSet
 
     }
@@ -65,7 +77,7 @@ class AvailableBookings extends React.Component{
             
             const city_map={};
             const date_sort=[];
-            Response.data.map((item,i)=>{
+            Response.data.map((item)=>{
                 if(city_map[item.area]){
                     city_map[item.area].push(item);
                 }
@@ -73,8 +85,11 @@ class AvailableBookings extends React.Component{
             city_map[item.area]=[item];
 
             })
-            Object.keys(city_map).map((city,i)=>{
+            //console.log(i + 'i');
+            Object.keys(city_map).map((city)=>{
+                
                 const city_values = this.group_by_dates(city_map[city]);
+
                 city_map[city] = city_values;
 
             })
@@ -105,7 +120,7 @@ class AvailableBookings extends React.Component{
 
 
             
-            //console.log( this.state.list);
+            console.log( {city_map});
 
             
 

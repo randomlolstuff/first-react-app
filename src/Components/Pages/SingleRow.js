@@ -18,7 +18,7 @@ class SingleRow extends React.Component{
                 
             }
 
-            
+
 
             book=()=>{
                 console.log("abc",this.props.item.id);
@@ -63,7 +63,7 @@ class SingleRow extends React.Component{
     <div><button className="cancel-btn" onClick={this.cancelBooking}>Cancel</button></div>:
     <div>
         {this.props.item.booked==false?
-    <div><button className="book-btn" onClick={this.book}>book</button></div>:
+    <div>{this.props.item.bookingAllowed === false ? 'Overlapping': ''}<button disabled={this.props.item.bookingAllowed === false ?true: false} className="book-btn" onClick={this.book}>book</button></div>:
     <div className="status-cancel"><div className="bookedText" >Booked</div><button className="cancel-btn" onClick={this.cancelBooking}>Cancel</button></div>}</div>
     }</div>
 
