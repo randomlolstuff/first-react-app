@@ -1,14 +1,14 @@
 import React, { Component} from "react";
-import "./App.css";
-
-class App extends Component{
+import ReactDOM from 'react-dom';
+import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
+import Routes from '../RoutesFile';
+import nested from './Components/Pages/nesteddata';
+import Nested from "./Components/Pages/nesteddata";
+import SendingProp from "./Components/Pages/sendingDataSprop"
+export default class App extends Component{
   render(){
-    return(
-      <div className="App">
-        <h1> Hello, World! </h1>
-      </div>
-    );
+    return(<SendingProp/>);
   }
 }
 
-export default App;
+//ReactDOM.render(<App />, document.getElementById("root"));
