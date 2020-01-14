@@ -1,10 +1,11 @@
 import React, { Component} from "react";
 import ReactDOM from 'react-dom';
-import AvailableBookings from './Components/Pages/AvailableBookings'
+import Feed from './Components/Pages/Feed'
+import Topnav from './Components/Pages/topnav'
 
 export default class App extends Component{
   render(){
-    return(<AvailableBookings/>);
+    return(<Feed/>);
   }
 }
 
