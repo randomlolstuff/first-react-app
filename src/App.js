@@ -5,7 +5,7 @@ import Topnav from './Components/Pages/topnav'
 
 export default class App extends Component{
   render(){
-    return(<Feed/>);
+    return(<Topnav/>);
   }
 }
 
