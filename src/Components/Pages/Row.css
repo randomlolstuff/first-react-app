@@ -1,0 +1,7 @@
+.row-size{
+    height: 150px;
+}
+#wrapper {
+    height: 95vh;
+    overflow-x: scroll;
+}
