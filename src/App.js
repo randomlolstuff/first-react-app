@@ -1,11 +1,11 @@
 import React, { Component} from "react";
 import ReactDOM from 'react-dom';
-import AvailableBookings from './Components/Pages/AvailableBookings'
+import SelectTab from './Components/Pages/selectTab'
+
 
 export default class App extends Component{
   render(){
-    return(<AvailableBookings/>);
+    return(<SelectTab/>);
   }
 }
 
-//ReactDOM.render(<App />, document.getElementById("root"));
