@@ -25,31 +25,38 @@ class CreateAcount extends React.Component{
     render(){
 
         return(<div className="create-acc-wrapper">
-                        <div>create an account</div>
+                        <div className="crt-act-text">create an account</div>
                         <form name="create-account" onSubmit={this.handleSubmit}>
   
 
                                 <div className="container">
+                                    <div className="input-field-wrapper">
                                     <label for="full-name"><b>Full Name</b></label>
                                     <input id="full-name" type="text" placeholder="Enter Full Name" name="full-name" required/>
+                                    </div>
+                                    <div className="input-field-wrapper">
                                     <label for="email"><b>Email</b></label>
                                     <input id="email" type="email" placeholder="Enter Email" name="email" required/>
-                                    <div className="country-dropdown">
+                                    </div>
+                                    <div className="input-field-wrapper">
+                                    
                                     <select onChange={this.setCountry} id ="selected-country"required>
                                     <option value="" selected  hidden>Choose Country</option>
-                                        {Object.keys(countryData).map((item,i)=><option value={item}>{item}</option>)}
+                                    {Object.keys(countryData).map((item,i)=><option value={item}>{item}</option>)}
                                         
                                     </select>
                                     </div>
-                                    <div className="state-dropdown">
+                                    <div className="input-field-wrapper">
                                     <select id="selected-state" required>
                                     <option value="" selected  hidden>Choose State</option>
                                     {(countryData[this.state.selectedCountry] || []).map((item,i)=><option value={item}>{item}</option>)}
                                 
                                     </select>
                                     </div>
+                                    <div className="continue-btn">
 
                                     <button type="submit" class="btn btn-default">Continue</button>
+                                    </div>
                             
                                 </div>
                         </form>

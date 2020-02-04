@@ -1,6 +1,7 @@
 import React from 'react';
 import AppInfo from './appInfo';
 import CreateAcount from './createAcount';
+import './selectTab.css';
 class SelectTab extends React.Component{
     state = {
         selectedTab:"create-account",
@@ -23,11 +24,15 @@ class SelectTab extends React.Component{
     }
 
     render(){
-        return(<div>
-            <div onClick={this.chooseTab} id ="create-account">tab 1</div>
-            <div onClick={this.chooseTab} id ="app-info">tab 2</div>
-            <div>{this.renderTab()}</div>
-        </div>)
+        return(<div className="primary-wrapper">
+                    <div className="form-wrapper">
+                        <div className="tab-wrapper">
+                            <div className="tab-sel" onClick={this.chooseTab} id ="create-account"></div>
+                        <div className="tab-sel" onClick={this.chooseTab} id ="app-info"></div>
+                    </div>
+                <div>{this.renderTab()}</div>
+                </div>
+                 </div>)
     }
 }
 export default SelectTab;

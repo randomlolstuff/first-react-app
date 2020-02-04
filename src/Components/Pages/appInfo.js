@@ -22,19 +22,24 @@ class AppInfo extends React.Component{
     }
 
     render(){
-        return(<div>
+        return(<div className="appinfo-wrapper">
                     <label className="switch">
                         <input id="my" type="checkbox" onChange={this.checked}/>
                         <span className="slider round"></span>
                     </label>
                     <form name="create-account-info" onSubmit={this.handleSubmitInfoForm}>
                             <div className="container">
-                                <label for="app-name"><b>App Name</b></label>
-                                <input id="app-name" type="text" placeholder="Enter app Name" name="app-name" required/>
-                                <label for="desc"><b>Description</b></label>
-                                <input id="desc" type="text" placeholder="Enter description" name="desc" required/>
-
-                                <button type="submit" class="btn btn-default">Continue</button>
+                                <div className="input-field-wrapper">
+                                    <label for="app-name"><b>App Name</b></label>
+                                    <input id="app-name" type="text" placeholder="Enter app Name" name="app-name" required/>
+                                </div>
+                                <div className="input-field-wrapper">
+                                    <label for="desc"><b>Description</b></label>
+                                    <input id="desc" type="text" placeholder="Enter description" name="desc" required/>
+                                </div>
+                                <div className="continue-btn">
+                                    <button type="submit" class="btn btn-default">Continue</button>
+                                </div>
                             
                             </div>
                     </form>

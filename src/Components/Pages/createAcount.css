@@ -1,10 +1,10 @@
-.container {
+/* .container {
     padding: 16px;
     width: 50px;
-  }
+  } */
   
   /* Full-width input fields */
-  input[type=text], input[type=email] {
+  /* input[type=text], input[type=email] {
     width: 100%;
     padding: 15px;
     margin: 5px 0 22px 0;
@@ -12,14 +12,26 @@
     border: none;
     background: #f1f1f1;
   }
-  
-  input[type=text]:focus, input[type=password]:focus {
+   */
+  /* input[type=text]:focus, input[type=password]:focus {
     background-color: #ddd;
     outline: none;
-  }
-  .country-dropdown{
+  } */
+  /* .country-dropdown{
     padding: 15px;;
   }
   .state-dropdown{
     padding: 15px;;
+} */
+.crt-act-text{
+  text-align: center;
+    margin-bottom: 10px;
+}
+.input-field-wrapper{
+  display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.label{
+  margin-bottom: 5px;
 }
