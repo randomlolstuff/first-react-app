@@ -5,7 +5,6 @@ class AppInfo extends React.Component{
         super();
     }
     checked=(event)=>{
-        debugger
         console.log(event.target);
         if(event.target.checked){
             document.getElementById("app-name").disabled =true;
@@ -23,6 +22,7 @@ class AppInfo extends React.Component{
 
     render(){
         return(<div className="appinfo-wrapper">
+                    <label for="checker"><b>Is this for an existing business ?</b></label>
                     <label className="switch">
                         <input id="my" type="checkbox" onChange={this.checked}/>
                         <span className="slider round"></span>
@@ -38,7 +38,7 @@ class AppInfo extends React.Component{
                                     <input id="desc" type="text" placeholder="Enter description" name="desc" required/>
                                 </div>
                                 <div className="continue-btn">
-                                    <button type="submit" class="btn btn-default">Continue</button>
+                                    <button type="submit" class=" btn-default">Continue</button>
                                 </div>
                             
                             </div>

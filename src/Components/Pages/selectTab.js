@@ -27,8 +27,8 @@ class SelectTab extends React.Component{
         return(<div className="primary-wrapper">
                     <div className="form-wrapper">
                         <div className="tab-wrapper">
-                            <div className="tab-sel" onClick={this.chooseTab} id ="create-account"></div>
-                        <div className="tab-sel" onClick={this.chooseTab} id ="app-info"></div>
+                            <div className={this.state.selectedTab=="create-account"?"highlightTab tab-sel":"tab-sel"} onClick={this.chooseTab} id ="create-account"></div>
+                        <div className={this.state.selectedTab!="create-account"?"highlightTab tab-sel":"tab-sel"} onClick={this.chooseTab} id ="app-info"></div>
                     </div>
                 <div>{this.renderTab()}</div>
                 </div>
