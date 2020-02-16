@@ -1,5 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
+minimize = process.argv.indexOf('--minimize') !== -1,
 
 module.exports = {
   entry: "./src/index.js",
@@ -24,6 +25,9 @@ module.exports = {
     publicPath: "/dist/",
     filename: "bundle.js"
   },
+  optimization: {
+    minimize: false
+},
   devServer: {
    
     contentBase: path.join(__dirname, "public/"),
@@ -34,4 +38,5 @@ module.exports = {
 
   },
   plugins: [new webpack.HotModuleReplacementPlugin()]
+  
 };

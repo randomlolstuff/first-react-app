@@ -1,11 +1,11 @@
 import React, { Component} from "react";
 import ReactDOM from 'react-dom';
-import SelectTab from './Components/Pages/selectTab'
+import AutoComplete from './Components/Pages/autoComplete'
 
 
 export default class App extends Component{
   render(){
-    return(<SelectTab/>);
+    return(<AutoComplete/>);
   }
 }
 
