@@ -1,11 +1,11 @@
 import React, { Component} from "react";
 import ReactDOM from 'react-dom';
-import AutoComplete from './Components/Pages/autoComplete'
+import Redux_example from './Components/Pages/redux_example';
 
 
 export default class App extends Component{
   render(){
-    return(<AutoComplete/>);
+    return(<Redux_example/>);
   }
 }
 
