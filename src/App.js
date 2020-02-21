@@ -1,11 +1,11 @@
 import React, { Component} from "react";
 import ReactDOM from 'react-dom';
-import Redux_example from './Components/Pages/redux_example';
+import ProgressBar from './Components/Pages/progressBar';
 
 
 export default class App extends Component{
   render(){
-    return(<Redux_example/>);
+    return(<ProgressBar/>);
   }
 }
 
