@@ -1,11 +1,11 @@
 import React, { Component} from "react";
 import ReactDOM from 'react-dom';
-import InputData from './Components/Pages/inputData';
+import HomePage from './Components/Pages/homePage';
 
 
 export default class App extends Component{
   render(){
-    return(<InputData/>);
+    return(<HomePage/>);
   }
 }
 
