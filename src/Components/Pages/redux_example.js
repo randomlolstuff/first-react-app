@@ -1,23 +1,27 @@
 import React from "react";
-import {useSelector} from 'react-redux';
 import increment from '../../Action/increment';
 import decrement from '../../Action/decrement';
-import {useDispatch} from 'react-redux';
+import { connect } from "react-redux";
 
 
 
-  const Redux_example=()=> {
-    const mycounter = useSelector(state =>state.counter);
-    const loggedValue = useSelector(state=> state.isLogged);
-    const dispatch = useDispatch();
-     
+
+  class Redux_example extends React.Component {
+
+     render(){
          return(<div>
-         <h1>counter {mycounter}</h1>
-        {console.log({mycounter})}
-         <button onClick={() => dispatch(increment())}>+</button>
-         <button onClick={() => dispatch(decrement())}>-</button>
+         <h1>counter {this.props.myCompCounter}</h1>
+         <button onClick={() => this.props.myCompIncrement()}>+</button>
+         <button onClick={() => this.props.myCompDecrement()}>-</button>
          </div>
             );
+         }
      
  }
- export default Redux_example;
+ const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+   myCompCounter: state.reducerCounter
+}};
+
+ export default connect(mapStateToProps, {myCompIncrement:increment,myCompDecrement:decrement}) (Redux_example);
