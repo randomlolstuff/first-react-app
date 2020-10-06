@@ -1,11 +1,27 @@
 import React, { Component} from "react";
+import DemoUniversalModal from './Components/universalModal';
+import DemoPage from './Components/demoPage';
+
 import ReactDOM from 'react-dom';
-import InputData from './Components/Pages/inputData';
 
 
 export default class App extends Component{
+  constructor(){
+    super();
+    this.state = {modalDisplay : "none"};
+  }
+
+  openModal = () => {
+    this.setState({modalDisplay:"block"});
+    
+  }
+
+  closeModal = () =>{
+    this.setState({modalDisplay:"none"});
+  }
+  
   render(){
-    return(<InputData/>);
+    return(<div><DemoPage openModal={this.openModal} closeModal={this.closeModal}/><DemoUniversalModal modalDisplay={this.state.modalDisplay}/></div>);
   }
 }
 
