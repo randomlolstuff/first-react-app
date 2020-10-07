@@ -7,11 +7,13 @@ import ReactDOM from "react-dom";
 export default class App extends Component {
   constructor() {
     super();
-    this.state = { modalDisplay: "none" };
+    this.state = { modalDisplay: "none",
+                    modalText : "" };
   }
 
-  openModal = () => {
+  openModal = (text) => {
     this.setState({ modalDisplay: "block" });
+    this.setState({modalText:text});
   };
 
   closeModal = () => {
@@ -24,7 +26,7 @@ export default class App extends Component {
         
         <ThemeContext.Provider value={{openModal:this.openModal,closeModal:this.closeModal}}>
           <DemoPage openModal={this.openModal} closeModal={this.closeModal} />
-          <DemoUniversalModal modalDisplay={this.state.modalDisplay} />
+          <DemoUniversalModal modalDisplay={this.state.modalDisplay} modalText = {this.state.modalText} />
         </ThemeContext.Provider>
       </div>
     );
